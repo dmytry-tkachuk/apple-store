@@ -1,10 +1,10 @@
 import React from 'react'
 import "./app.sass"
-import HomePage from "../pages/home-page/home-page";
 import {Route, Switch} from "react-router-dom";
 import CatalogPage from "../pages/catalog-page/catalog-page";
 import withService from "../hoc/with-service";
 import withData from "../hoc/with-data";
+import HomePage from "../pages/home-page/home-page";
 
 const App = ({service}) => {
 
