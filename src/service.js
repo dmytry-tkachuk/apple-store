@@ -7,7 +7,7 @@ export default class AppleService{
                     reject(new Error("Something went wrong"))
                 }
                 resolve(iphones)
-            }, 2000)
+            }, 1000)
         })
     }
 
