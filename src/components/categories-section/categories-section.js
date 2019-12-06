@@ -15,11 +15,17 @@ const CategoriesSection = () => {
             <div className="wrap">
                 <div className="page-title">Categories</div>
                 <div className="categories">
-                    <Link to={"/catalog/iphones"} className="item">
+                    <Link to={"/catalog/837382"} className="item">
                         <div className="img">
                             <img src={img6} alt=""/>
                         </div>
                         <div className="title">iPhone</div>
+                    </Link>
+                    <Link to={"catalog/736726"} className="item">
+                        <div className="img">
+                            <img src={img5} alt=""/>
+                        </div>
+                        <div className="title">iPad</div>
                     </Link>
                     <div className="item">
                         <div className="img">
@@ -44,12 +50,6 @@ const CategoriesSection = () => {
                             <img src={img4} alt=""/>
                         </div>
                         <div className="title">iMac</div>
-                    </div>
-                    <div className="item">
-                        <div className="img">
-                            <img src={img5} alt=""/>
-                        </div>
-                        <div className="title">iPad</div>
                     </div>
                 </div>
             </div>

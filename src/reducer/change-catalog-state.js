@@ -1,16 +1,21 @@
 export const changeCatalogState = (state, action) => {
+
     if(state === undefined) {
         return {
-            data: [],
+            data: {},
             loading: false
         }
     }
 
      switch (action.type) {
          case "CHANGE_CATALOG_LIST":
+             const { id, data } = action.payload;
              return {
                  ...state.catalog,
-                 data: action.payload
+                 data: {
+                     ...state.catalog.data,
+                     [id]: data
+                 }
              };
          case "CHANGE_LOADING":
              return {
@@ -20,5 +25,4 @@ export const changeCatalogState = (state, action) => {
          default:
              return state.catalog
      }
-
-}
+};

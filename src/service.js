@@ -1,13 +1,13 @@
 export default class AppleService{
 
-    getIphones = () => {
+    getDevices = (id) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if (Math.random() > 1) {
                     reject(new Error("Something went wrong"))
                 }
-                resolve(iphones)
-            }, 1000)
+                resolve(storage[id])
+            }, 0)
         })
     }
 
@@ -73,3 +73,38 @@ const ipads = [
         stoсkPrice: null
     },
 ]
+
+const best_sales = [
+    {
+        category: "iphone",
+        id: 1001,
+        model: "Smartphone Apple iPhone 8 64GB (Gold) (MQ6M2)",
+        description: "Screen: 4.7 (1334x750) / Processor: six-core Apple A11 Bionic / Camera: 12 MP + 7 MP / OS: iOS 11 / Internal memory: 64 GB / RAM: 2 GB / LTE / GPS, GLONASS, BDS, GALILEO / Dimensions: 138.4x67.3x7.3 mm / Weight: 148 g",
+        price: "600",
+        img: "https://avic.ua/assets/cache/images/assets/files/products/34325/image/200x220-apple-iphone-8-gold-02.jpg",
+        stoсkPrice: "570"
+    },
+    {
+        category: "ipad",
+        id: 2002,
+        model: "Apple iPad Pro 11 (2018) Wi-Fi 256GB Space Gray (MTXQ2)",
+        description: "Screen: 11.0 (2388x1668) (Liquid Retina) / Processor: eight-core Apple A12X Bionic / RAM: 4 GB / 256 GB of internal memory / Camera: 12 MP and 7 MP / OS: iOS 12 / Dimensions: 247.6 x 178.5 x 5 9 mm / Weight: 468 g",
+        price: "900",
+        img: "https://avic.ua/assets/cache/images/assets/files/products/210518/image/200x220-apple-ipad-pro-11-2018-space-gray-1.jpg",
+        stoсkPrice: "820"
+    },
+    {
+        category: "iphone",
+        id: 1003,
+        model: "Smartphone Apple iPhone 11 64GB Product Red (MWL92)",
+        description: "Screen: 6.1 IPS (1792x828) / Processor: six-core Apple A13 Bionic / Camera: 12 + 12 MP + 12 MP / OS: iOS 13 / Internal memory: 64 GB / RAM: 4 GB / LTE / GPS, GLONASS, BDS , GALILEO / Dimensions: 150.9 x 75.7 x 8.3 mm / Weight: 194 g",
+        price: "900",
+        img: "https://avic.ua/assets/cache/images/assets/files/products/34325/image/200x220-apple-iphone-8-gold-02.jpg",
+        stoсkPrice: "860"
+    },
+]
+
+const storage = {
+    837382: [...iphones],
+    736726: [...ipads]
+};

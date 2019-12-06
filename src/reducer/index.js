@@ -1,10 +1,14 @@
 import {changeCatalogState} from "./change-catalog-state";
+import {createCurrentDevice} from "./create-current-device";
 
 const reducer = (state, action) => {
+    // console.log("MAIN STATE", state);
     return {
         catalog: changeCatalogState(state, action),
+        currentDevice: createCurrentDevice(state, action),
+        bestSales: []
     }
-}
+};
 
 export default reducer
 
