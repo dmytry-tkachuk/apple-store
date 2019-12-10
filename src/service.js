@@ -9,10 +9,63 @@ export default class AppleService{
                 resolve(storage[id])
             }, 0)
         })
+    };
+
+    getCurrentDevice = (id) => {
+        return new Promise((resolve) => {
+            let currentDevice = {};
+            Object.keys(storage).map((el) => {
+                const res = storage[el].find((el) => el.id === id);
+                if(res) currentDevice = res;
+            });
+            setTimeout(() => {
+                resolve(currentDevice)
+            }, 0)
+        })
+    };
+
+    logIn = (email, password) => {
+        return new Promise((resolve) => {
+            let user = false;
+            users.map((el) => {
+                if(el.email === email) user = el
+            });
+            setTimeout(() => {
+                if(!user) resolve({status: -1, error: "User not fount"})
+                else if(user.password !== password) resolve({status: -1, error: "Password incorrect"})
+                else {
+                    const { password, ...newUser } = user;
+                    resolve ({status: 0, user: newUser})
+                }
+            }, 0)
+        })
     }
 
 }
 
+const users = [
+    {
+        first_name: "Robert",
+        last_name: "Downey",
+        phone: "0990953678",
+        email: "r.downey@gmail.com",
+        password: "111"
+    },
+    {
+        first_name: "Bradley",
+        last_name: "Pitt",
+        phone: "0987893889",
+        email: "b.pitt@gmail.com",
+        password: "333",
+    },
+    {
+        first_name: "Jennifer",
+            last_name: "Aniston",
+        phone: "0636572838",
+        email: "j.aniston@gmail.com",
+        password: "222"
+    }
+];
 
 const iphones = [
     {

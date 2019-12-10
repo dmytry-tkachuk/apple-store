@@ -1,13 +1,13 @@
 import React from 'react'
 import {Link} from "react-router-dom";
 
-export const Catalog = ({data=[], createCurrentDevice}) => {
+export const Catalog = ({data=[], getCurrentDevice}) => {
     return(
         <div className="catalog">
             {
                 data.map((el) => {
                     return(
-                        <div onClick = {() => createCurrentDevice(el)} className={"item"} key={el.id}>
+                        <div onClick = {() => getCurrentDevice(el.id)} className={"item"} key={el.id}>
                             <div className="img">
                                 <img src={el.img} alt=""/>
                             </div>

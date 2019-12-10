@@ -21,6 +21,13 @@ export const fetchDevices = (getDevices, dispatch, id) => {
         })
 };
 
+export const fetchCurrentDevice = (getCurrentDevice, dispatch, id) => {
+    getCurrentDevice(id)
+        .then((data) => {
+            dispatch(createCurrentDevice(data));
+        })
+};
+
 export const createCurrentDevice = (payload) => {
     return {
         type: "CREATE_CURRENT_DEVICE",

@@ -3,7 +3,7 @@ import withService from "../../hoc/with-service";
 import "./catalog-page.sass"
 import {Catalog} from "./catalog/catalog";
 import {connect} from "react-redux";
-import {createCurrentDevice, fetchDevices} from "../../../actions";
+import {createCurrentDevice, fetchCurrentDevice, fetchDevices} from "../../../actions";
 import {withRouter} from "react-router-dom";
 
 class CatalogPage extends Component {
@@ -24,9 +24,9 @@ class CatalogPage extends Component {
         fetchDevices(id)
     };
 
-    createCurrentDevice = (device) => {
-        this.props.history.push(`/device/${device.id}`);
-        this.props.createCurrentDevice(device)
+    getCurrentDevice = (id) => {
+        this.props.history.push(`/device/${id}`);
+        this.props.getCurrentDevice(id)
     };
 
     render(){
@@ -37,7 +37,7 @@ class CatalogPage extends Component {
         return(
             <div className={"wrapper"}>
                 <div className="wrap">
-                    <Catalog data = {data[id]} createCurrentDevice = {this.createCurrentDevice}/>
+                    <Catalog data = {data[id]} getCurrentDevice = {this.getCurrentDevice}/>
                 </div>
             </div>
         )
@@ -52,7 +52,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     const {service} = ownProps;
     return {
         fetchDevices: (id) => fetchDevices(service.getDevices, dispatch, id),
-        createCurrentDevice: (device) => dispatch(createCurrentDevice(device))
+        getCurrentDevice: (id) => fetchCurrentDevice(service.getCurrentDevice, dispatch, id)
     }
 };
 
