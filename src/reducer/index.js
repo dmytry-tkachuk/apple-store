@@ -1,12 +1,15 @@
 import {changeCatalogState} from "./change-catalog-state";
 import {createCurrentDevice} from "./create-current-device";
+import {changeModals} from "./change-modals";
+import {updateUser} from "./update-user";
 
 const reducer = (state, action) => {
     // console.log("MAIN STATE", state);
     return {
+        user: updateUser(state, action),
         catalog: changeCatalogState(state, action),
         currentDevice: createCurrentDevice(state, action),
-        bestSales: []
+        modals: changeModals(state, action),
     }
 };
 

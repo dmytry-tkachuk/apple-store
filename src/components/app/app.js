@@ -3,15 +3,15 @@ import "./app.sass"
 import {Route, Switch} from "react-router-dom";
 import CatalogPage from "../pages/catalog-page/catalog-page";
 import HomePage from "../pages/home-page/home-page";
-import {Header} from "../header/header";
+import Header from "../header/header";
 import CartItemPage from "../pages/cart-item-page/cart-item-page";
-import {LogInModal} from "../modals/log-in-modal/log-in-modal";
+import Modals from "../modals/modals"
 
 const App = () => {
 
     return(
         <>
-            <LogInModal/>
+            <Modals />
             <Header/>
             <Switch>
                 <Route
@@ -28,7 +28,9 @@ const App = () => {
                 />
                 <Route
                     path={"/device/:id"}
-                    component={CartItemPage}
+                    render={({match}) => {
+                        return <CartItemPage id = {match.params.id}  />
+                    }}
                     exact
                 />
                 <Route

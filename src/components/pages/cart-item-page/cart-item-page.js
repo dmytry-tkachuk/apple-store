@@ -1,8 +1,16 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux";
 import "./cart-item-page.sass"
+import {fetchCurrentDevice} from "../../../actions";
+import withService from "../../hoc/with-service";
+import {withRouter} from "react-router-dom";
 
 class CartItemPage extends Component {
+
+    componentDidMount() {
+        this.props.getCurrentDevice(this.props.id)
+    }
+
     render(){
         const {device} = this.props;
         return(
@@ -32,8 +40,17 @@ const mapStateToProps = ({currentDevice:device}) => {
     return {device}
 };
 
-const mapDispatchToProps = () => {
-    return {}
+const mapDispatchToProps = (dispatch, ownProps) => {
+    const {service} = ownProps;
+    return {
+        getCurrentDevice: (id) => fetchCurrentDevice(service.getCurrentDevice, dispatch, id)
+    }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartItemPage)
+export default (
+    withRouter(
+        withService(
+            connect(mapStateToProps, mapDispatchToProps)(CartItemPage)
+        )
+    )
+)

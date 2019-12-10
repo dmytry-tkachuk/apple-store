@@ -24,11 +24,6 @@ class CatalogPage extends Component {
         fetchDevices(id)
     };
 
-    getCurrentDevice = (id) => {
-        this.props.history.push(`/device/${id}`);
-        this.props.getCurrentDevice(id)
-    };
-
     render(){
         const {catalog: {loading, data}, id } = this.props;
 
@@ -37,7 +32,7 @@ class CatalogPage extends Component {
         return(
             <div className={"wrapper"}>
                 <div className="wrap">
-                    <Catalog data = {data[id]} getCurrentDevice = {this.getCurrentDevice}/>
+                    <Catalog data = {data[id]}/>
                 </div>
             </div>
         )
@@ -52,7 +47,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     const {service} = ownProps;
     return {
         fetchDevices: (id) => fetchDevices(service.getDevices, dispatch, id),
-        getCurrentDevice: (id) => fetchCurrentDevice(service.getCurrentDevice, dispatch, id)
     }
 };
 

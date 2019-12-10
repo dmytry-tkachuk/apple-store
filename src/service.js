@@ -19,7 +19,7 @@ export default class AppleService{
                 if(res) currentDevice = res;
             });
             setTimeout(() => {
-                resolve(currentDevice)
+                resolve(iphones[0])
             }, 0)
         })
     };
@@ -31,8 +31,8 @@ export default class AppleService{
                 if(el.email === email) user = el
             });
             setTimeout(() => {
-                if(!user) resolve({status: -1, error: "User not fount"})
-                else if(user.password !== password) resolve({status: -1, error: "Password incorrect"})
+                if(!user) resolve({status: -1, error: "User not found"});
+                else if(user.password !== password) resolve({status: -1, error: "Password incorrect"});
                 else {
                     const { password, ...newUser } = user;
                     resolve ({status: 0, user: newUser})

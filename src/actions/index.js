@@ -34,3 +34,22 @@ export const createCurrentDevice = (payload) => {
         payload
     }
 };
+
+export const openLoginModal = () => {
+    return {
+        type: "OPEN_LOGIN_MODAL",
+    }
+};
+
+export const closeModal = () => {
+    return {
+        type: "CLOSE_MODAL",
+    }
+};
+
+export const updateUser = (payload) => {
+    return {
+        type: "UPDATE_USER",
+        payload
+    }
+};

@@ -2,8 +2,11 @@ import React from 'react'
 import './header.sass'
 import {NavLink} from "react-router-dom";
 import logo from './logo.png'
+import {openLoginModal} from "../../actions";
+import withService from "../hoc/with-service";
+import {connect} from "react-redux";
 
-export const Header = () => {
+const Header = ({openLoginModal, user}) => {
     return(
         <div className={"header"}>
             <div className="container">
@@ -18,7 +21,30 @@ export const Header = () => {
                     <NavLink to={"/catalog/333"} className="item">Accessories</NavLink>
                     <NavLink to={"/catalog/444"} className="item">Apple Watch</NavLink>
                 </nav>
+                {
+                    user?
+                        <div className="login" >Hello, {user.first_name}</div>
+                        :
+                        <div className="login" onClick={openLoginModal}>Login</div>
+                }
             </div>
         </div>
     )
-}
+};
+
+const mapStateToProps = ({user}) => {
+    return {user}
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        openLoginModal: () => dispatch(openLoginModal())
+    }
+};
+
+export default (
+        withService(
+            connect(mapStateToProps, mapDispatchToProps)(Header)
+        )
+)
+
