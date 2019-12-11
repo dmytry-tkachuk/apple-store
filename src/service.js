@@ -39,6 +39,27 @@ export default class AppleService{
                 }
             }, 0)
         })
+    };
+
+    checkIn = (user={}) => {
+        const {first_name, last_name, phone, email, password, confirmPassword} = user;
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                if(!first_name || !last_name || !phone || !email || !password || !confirmPassword ){
+                    resolve({status: -1, error: "Please fill in all fields"})
+                }
+                else if(users.some(el => el.email === email)) {
+                    resolve({status: -1, error: "Email already exists"})
+                }
+                else if(password !== confirmPassword){
+                    resolve({status: -1, error: "Password and confirm password do not match"})
+                }
+                else {
+                    users.push({first_name, last_name, phone, email, password});
+                    resolve({status: 0, user: {first_name, last_name, phone, email}})
+                }
+            }, 0)
+        })
     }
 
 }
