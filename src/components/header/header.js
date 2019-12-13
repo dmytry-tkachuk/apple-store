@@ -25,8 +25,17 @@ const Header = ({openLoginModal, user}) => {
                     user?
                         <div className="login" >Hello, {user.first_name}</div>
                         :
-                        <div className="login" onClick={openLoginModal}>Login</div>
+                        <div className="login" onClick={openLoginModal}>
+                            Sign In
+                            <i className="fas fa-sign-in-alt"></i>
+                        </div>
                 }
+
+                <NavLink to = {"/shopping-cart"} className="cart-item">
+                    <div className="sum">0$</div>
+                    <i className="fas fa-shopping-cart"></i>
+                    <div className="count">0</div>
+                </NavLink>
             </div>
         </div>
     )

@@ -12,6 +12,7 @@ export default class AppleService{
     };
 
     getCurrentDevice = (id) => {
+        id = Number(id);
         return new Promise((resolve) => {
             let currentDevice = {};
             Object.keys(storage).map((el) => {
@@ -19,7 +20,7 @@ export default class AppleService{
                 if(res) currentDevice = res;
             });
             setTimeout(() => {
-                resolve(iphones[0])
+                resolve(currentDevice)
             }, 0)
         })
     };

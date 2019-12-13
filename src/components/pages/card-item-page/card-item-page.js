@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from "react-redux";
-import "./cart-item-page.sass"
+import "./card-item-page.sass"
 import {fetchCurrentDevice} from "../../../actions";
 import withService from "../../hoc/with-service";
 import {withRouter} from "react-router-dom";
 
-class CartItemPage extends Component {
+class CardItemPage extends Component {
 
     componentDidMount() {
         this.props.getCurrentDevice(this.props.id)
@@ -50,7 +50,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 export default (
     withRouter(
         withService(
-            connect(mapStateToProps, mapDispatchToProps)(CartItemPage)
+            connect(mapStateToProps, mapDispatchToProps)(CardItemPage)
         )
     )
 )
