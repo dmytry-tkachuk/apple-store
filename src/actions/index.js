@@ -53,3 +53,40 @@ export const updateUser = (payload) => {
         payload
     }
 };
+
+export const addToCart = (payload) => {
+    return {
+        type: "ADD_TO_CART",
+        payload
+    }
+};
+
+export const changeCount = (payload) => {
+    return {
+        type: "CHANGE_COUNT",
+        payload
+    }
+};
+
+export const clearCart = (payload) => {
+    return {
+        type: "CLEAR_CART",
+        payload
+    }
+};
+
+export const makeOrder = (makeOrder, dispatch, cart) => {
+    makeOrder(cart)
+        .then((data) => {
+            dispatch(makeResult(data));
+        })
+};
+
+const makeResult = (payload) => {
+    console.log(payload)
+    return {
+        type: "MAKE_RESULT",
+        payload
+    }
+}
+

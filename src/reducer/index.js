@@ -2,6 +2,8 @@ import {changeCatalogState} from "./change-catalog-state";
 import {createCurrentDevice} from "./create-current-device";
 import {changeModals} from "./change-modals";
 import {updateUser} from "./update-user";
+import {changeCart} from "./change-cart";
+import {makeResult} from "./make-result";
 
 const reducer = (state, action) => {
     // console.log("MAIN STATE", state);
@@ -10,6 +12,8 @@ const reducer = (state, action) => {
         catalog: changeCatalogState(state, action),
         currentDevice: createCurrentDevice(state, action),
         modals: changeModals(state, action),
+        cart: changeCart(state, action),
+        result: makeResult(state, action)
     }
 };
 

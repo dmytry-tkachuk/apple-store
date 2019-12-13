@@ -6,7 +6,9 @@ import {openLoginModal} from "../../actions";
 import withService from "../hoc/with-service";
 import {connect} from "react-redux";
 
-const Header = ({openLoginModal, user}) => {
+const Header = ({openLoginModal, user, cart}) => {
+    const { sum, count } = cart;
+
     return(
         <div className={"header"}>
             <div className="container">
@@ -32,17 +34,17 @@ const Header = ({openLoginModal, user}) => {
                 }
 
                 <NavLink to = {"/shopping-cart"} className="cart-item">
-                    <div className="sum">0$</div>
+                    <div className="sum">{sum}$</div>
                     <i className="fas fa-shopping-cart"></i>
-                    <div className="count">0</div>
+                    <div className="count">{count}</div>
                 </NavLink>
             </div>
         </div>
     )
 };
 
-const mapStateToProps = ({user}) => {
-    return {user}
+const mapStateToProps = ({user, cart}) => {
+    return {user, cart}
 };
 
 const mapDispatchToProps = (dispatch) => {

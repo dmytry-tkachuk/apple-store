@@ -40,6 +40,13 @@ const App = () => {
                     exact
                 />
                 <Route
+                    path={"/result-page"}
+                    render = {() => {
+                        return <div>Success page</div>
+                    }}
+                    exact
+                />
+                <Route
                     render={() => {
                         return <div>Not found</div>
                     }}

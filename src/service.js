@@ -63,6 +63,17 @@ export default class AppleService{
         })
     }
 
+    makeOrder = (order) => {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                if (Math.random() > 0.9) {
+                    resolve({status: -1, error: "Something went wrong"})
+                }
+                resolve({status: 0})
+            }, 0)
+        })
+    }
+
 }
 
 const users = [
